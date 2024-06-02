@@ -1,14 +1,18 @@
 <script setup>
 import {useForm,useField} from 'vee-validate';
 import {loginSchema as validationSchema} from '../validation/loginSchema';
+import {useAuthStore} from '@/stores/auth';
 
 const { handleSubmit} = useForm({validationSchema});
 
 const email = useField('email')
 const password =useField('password')
-console.log(email)
+
+const auth = useAuthStore();
+
+
 const submit = handleSubmit((values) => {
-    console.log(values);
+    auth.login(values);
 });
 
 
