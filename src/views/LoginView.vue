@@ -19,15 +19,17 @@ const submit = handleSubmit((values) => {
 </script>
 
 <template>
- <v-card flat max-width="500" class="mx-auto my-10">
-    <v-card-title class="text-center  text-h4 font-weight-bold" tag="h4">Iniciar sesion</v-card-title>
-    <v-form>
+    <v-card flat max-width="500" class="mx-auto my-10">
+      <v-card-title class="text-center text-h4 font-weight-bold" tag="h4">Iniciar Sesión</v-card-title>
+      <v-alert v-if="auth.hasError" :title="auth.errorMsg" type="error" color="error" icon="$error"></v-alert>
+   
+      <v-form>
         <v-text-field type="email" label="Email" class="mb-3" v-model="email.value.value" :error-messages="email.errorMessage.value"/>
-        <v-text-field type="password" label="Password" v-mode="password.value.value" :error-messages="password.errorMessage.value"/>
-        <v-btn block color="light-green-accent-4" @click="submit">Iniciar Sesion</v-btn>
-    </v-form>
- </v-card>
-</template>
+        <v-text-field type="password" label="Password" v-model="password.value.value" :error-messages="password.errorMessage.value"/>
+        <v-btn block color="light-green-accent-3" @click="submit">Iniciar Sesión</v-btn>
+      </v-form>
+    </v-card>
+  </template>
 
 <style scoped>
 </style>
